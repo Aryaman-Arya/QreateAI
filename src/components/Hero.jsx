@@ -1,4 +1,41 @@
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+
+const TypewriterText = ({ text, className, delay = 0, speed = 80 }) => {
+  const [displayText, setDisplayText] = useState('')
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (currentIndex < text.length) {
+        setDisplayText(prev => prev + text[currentIndex])
+        setCurrentIndex(prev => prev + 1)
+      }
+    }, speed)
+
+    return () => clearTimeout(timer)
+  }, [currentIndex, text, speed])
+
+  useEffect(() => {
+    const startTimer = setTimeout(() => {
+      setCurrentIndex(0)
+      setDisplayText('')
+    }, delay * 1000)
+
+    return () => clearTimeout(startTimer)
+  }, [delay])
+
+  return (
+    <span className={className}>
+      {displayText}
+      <motion.span
+        animate={{ opacity: [1, 0] }}
+        transition={{ duration: 0.5, repeat: Infinity }}
+        className="inline-block w-1 h-12 bg-current ml-1"
+      />
+    </span>
+  )
+}
 
 const Hero = () => {
   const stats = [
@@ -42,20 +79,22 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-gray-900 leading-tight"
               >
-                Too niche. Too bold. Too bad.
-                <br />
-                <span className="relative">
-                  We build it anyway.
+                <div className="relative">
+                  <TypewriterText 
+                    text="Too niche. Too bold. Too bad. We build it anyway." 
+                    delay={0.4}
+                    speed={80}
+                  />
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: '100%' }}
-                    transition={{ duration: 1, delay: 1.2 }}
+                    transition={{ duration: 1, delay: 3.5 }}
                     className="absolute bottom-2 left-0 h-1 bg-red-700 rounded-full"
                     style={{
                       background: 'linear-gradient(90deg, #B22222 0%, #DC2626 100%)'
                     }}
                   />
-                </span>
+                </div>
               </motion.h1>
               
               <motion.p
