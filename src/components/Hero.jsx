@@ -116,6 +116,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-red-700 text-white text-lg font-semibold rounded-lg hover:bg-red-800 transition-all duration-300 shadow-lg hover:shadow-xl"
+                onClick={() => window.open('https://calendly.com/qareailabs', '_blank')}
               >
                 Start Your Project
               </motion.button>

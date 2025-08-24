@@ -49,6 +49,7 @@ const Contact = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-12 py-5 bg-white text-red-800 text-xl font-bold rounded-lg hover:bg-red-50 transition-all duration-300 shadow-2xl hover:shadow-white/20"
+              onClick={() => window.open('https://calendly.com/qareailabs', '_blank')}
             >
               Book a Consultation
             </motion.button>
@@ -57,10 +58,10 @@ const Contact = () => {
               <p className="text-lg">
                 Or email us at{' '}
                 <a 
-                  href="mailto:hello@qreate.ai"
+                  href="mailto:founders@qareai.in"
                   className="text-white hover:text-red-200 underline transition-colors duration-200"
                 >
-                  hello@qreate.ai
+                  founders@qareai.in
                 </a>
               </p>
             </div>

@@ -155,6 +155,7 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-6 py-2 border-2 border-red-700 text-red-700 hover:bg-red-700 hover:text-white transition-all duration-300 rounded-md font-medium"
+              onClick={() => window.open('https://calendly.com/qareailabs', '_blank')}
             >
               Get in Touch
             </motion.button>
@@ -193,7 +194,9 @@ const Header = () => {
                 {item}
               </a>
             ))}
-            <button className="w-full px-6 py-2 border-2 border-red-700 text-red-700 hover:bg-red-700 hover:text-white transition-all duration-300 rounded-md font-medium">
+            <button className="w-full px-6 py-2 border-2 border-red-700 text-red-700 hover:bg-red-700 hover:text-white transition-all duration-300 rounded-md font-medium"
+              onClick={() => window.open('https://calendly.com/qareailabs', '_blank')}
+            >
               Get in Touch
             </button>
           </div>

@@ -15,10 +15,12 @@ const Footer = () => {
     {
       title: 'Services',
       links: [
+        { name: 'AI/ML Services', href: '#services' },
+        { name: 'Development Stack', href: '#services' },
+        { name: 'Specialized Solutions', href: '#services' },
         { name: 'Computer Vision', href: '#services' },
-        { name: 'Environmental AI', href: '#services' },
-        { name: 'Supply Chain', href: '#services' },
-        { name: 'Intelligent Systems', href: '#services' }
+        { name: 'LLM Fine-tuning', href: '#services' },
+        { name: 'Agentic AI', href: '#services' }
       ]
     },
     {
@@ -26,7 +28,7 @@ const Footer = () => {
       links: [
         { name: 'About Us', href: '#about' },
         { name: 'Team', href: '#team' },
-        { name: 'Portfolio', href: '#portfolio' },
+        { name: 'Partnerships', href: '#portfolio' },
         { name: 'Contact', href: '#contact' }
       ]
     },
@@ -90,7 +92,7 @@ const Footer = () => {
           className="border-t border-gray-800 pt-8 text-center"
         >
           <p className="text-gray-400">
-            © 2024 QreateAI Labs. All rights reserved.
+            © 2024 QareAI Labs. All rights reserved.
           </p>
         </motion.div>
       </div>
