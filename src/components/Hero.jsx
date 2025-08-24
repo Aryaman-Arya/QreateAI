@@ -39,8 +39,8 @@ const TypewriterText = ({ text, className, delay = 0, speed = 80 }) => {
 
 const Hero = () => {
   const stats = [
-    { label: 'AI/ML/Computer Vision', value: 'Advanced algorithms and neural networks' },
-    { label: '3,000+', value: 'Projects completed' }
+    { label: 'Vision. Language. Intelligence.', value: 'Solving problems across modalities.' },
+    { label: '10+ Projects', value: 'From early-stage startups to enterprises' }
   ]
 
   return (
