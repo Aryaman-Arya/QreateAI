@@ -8,44 +8,37 @@ const TeamBackground = () => {
     {
       name: 'National University of Singapore',
       filename: 'National University of Singapore.png',
-      theme: 'blue',
-      scale: false
+      theme: 'blue'
     },
     {
       name: 'National Taiwan University',
       filename: 'National Taiwan University.png',
-      theme: 'green',
-      scale: false
+      theme: 'green'
     },
     {
       name: 'IIIT Delhi',
       filename: 'IIIT Delhi.png',
-      theme: 'purple',
-      scale: false
+      theme: 'purple'
     },
     {
       name: 'Indian Institute of Science',
       filename: 'Indian Institute of Science.png',
-      theme: 'pink',
-      scale: false
+      theme: 'pink'
     },
     {
       name: 'Samsung Research',
       filename: 'Samsung Research.png',
-      theme: 'yellow',
-      scale: true
+      theme: 'yellow'
     },
     {
       name: 'Hyperverge',
       filename: 'Hyperverge.png',
-      theme: 'indigo',
-      scale: true
+      theme: 'indigo'
     },
     {
       name: 'University of South Carolina',
       filename: 'University of South Carolina.png',
-      theme: 'teal',
-      scale: false
+      theme: 'teal'
     }
   ]
 
@@ -76,24 +69,16 @@ const TeamBackground = () => {
   // Animation variants for individual logo items
   const logoVariants = {
     initial: { 
-      y: 0,
-      rotate: 0,
       scale: 1
     },
     animate: {
-      y: [-5, 5, -5],
-      rotate: [-2, 2, -2],
-      scale: [1, 1.02, 1],
+      scale: 1,
       transition: {
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut"
+        duration: 0
       }
     },
     hover: {
       scale: 1.1,
-      rotate: 0,
-      y: 0,
       transition: {
         duration: 0.3
       }
@@ -103,27 +88,21 @@ const TeamBackground = () => {
   // Floating animation variants for different elements
   const floatingVariants = {
     float1: {
-      y: [0, -10, 0],
+      y: 0,
       transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut"
+        duration: 0
       }
     },
     float2: {
-      y: [0, 8, 0],
+      y: 0,
       transition: {
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut"
+        duration: 0
       }
     },
     float3: {
-      y: [0, -6, 0],
+      y: 0,
       transition: {
-        duration: 7,
-        repeat: Infinity,
-        ease: "easeInOut"
+        duration: 0
       }
     }
   }
@@ -192,7 +171,7 @@ const TeamBackground = () => {
           <div 
             className={`flex space-x-8 ${isHovered ? 'animate-pause' : 'animate-scroll'}`}
             style={{
-              animationDuration: '30s',
+              animationDuration: '15s',
               animationTimingFunction: 'linear',
               animationIterationCount: 'infinite'
             }}
@@ -204,10 +183,7 @@ const TeamBackground = () => {
                 initial="initial"
                 animate="animate"
                 whileHover="hover"
-                className={`group cursor-pointer flex-shrink-0 ${logo.scale ? 'w-96 h-48' : 'w-88 h-44'}`}
-                style={{
-                  animationDelay: `${index * 0.5}s`
-                }}
+                className="group cursor-pointer flex-shrink-0 w-96 h-48"
               >
                 <motion.div
                   variants={floatingVariants}
@@ -216,7 +192,7 @@ const TeamBackground = () => {
                 >
                   <div className="text-center">
                     <motion.div 
-                      className="w-40 h-40 rounded-full flex items-center justify-center mb-0 mx-auto overflow-hidden"
+                      className="w-48 h-48 rounded-full flex items-center justify-center mb-0 mx-auto overflow-hidden"
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.3 }}
                     >
