@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Services from './components/Services'
+import Process from './components/Process'
 import Portfolio from './components/Portfolio'
 import Team from './components/Team'
 import TeamBackground from './components/TeamBackground'
@@ -16,6 +17,7 @@ function App() {
       <main>
         <Hero />
         <Services />
+        <Process />
         <Portfolio />
         <Team />
         <TeamBackground />
