@@ -3,10 +3,10 @@ import { motion } from 'framer-motion'
 const Team = () => {
   const teamMembers = [
     {
-      name: 'Subhanshu',
-      role: 'Co-Founder & CPO',
-      description: 'Shaping our product strategy',
-      image: '/founder_images/Subhanshu Arya.jpeg'
+      name: 'Aryaman',
+      role: 'Co-Founder & CEO',
+      description: 'Leading our vision and strategic direction',
+      image: '/founder_images/Aryaman.jpeg'
     },
     {
       name: 'Harsh',
@@ -15,10 +15,10 @@ const Team = () => {
       image: '/founder_images/Harsh Pandey.jpeg'
     },
     {
-      name: 'Aryaman',
-      role: 'Co-Founder & CEO',
-      description: 'Leading our vision and strategic direction',
-      image: '/founder_images/Aryaman.jpeg'
+      name: 'Subhanshu',
+      role: 'Co-Founder & CPO',
+      description: 'Shaping our product strategy',
+      image: '/founder_images/Subhanshu Arya.jpeg'
     }
   ]
 
