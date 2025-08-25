@@ -1,6 +1,36 @@
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 const Portfolio = () => {
+  const [selectedVideo, setSelectedVideo] = useState(null)
+
+  const openVideoModal = (videoUrl, title) => {
+    setSelectedVideo({ url: videoUrl, title })
+  }
+
+  const closeVideoModal = () => {
+    setSelectedVideo(null)
+  }
+
+  // Handle escape key to close modal
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        closeVideoModal()
+      }
+    }
+
+    if (selectedVideo) {
+      document.addEventListener('keydown', handleEscape)
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden'
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+      document.body.style.overflow = 'unset'
+    }
+  }, [selectedVideo])
   const projects = [
     {
       category: 'Computer Vision',
@@ -216,13 +246,16 @@ const Portfolio = () => {
                     </div>
 
                     {/* Play indicator */}
-                    <div className="absolute bottom-4 right-4 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                    <button
+                      onClick={() => openVideoModal(project.videoUrl, project.title)}
+                      className="absolute bottom-4 right-4 opacity-60 group-hover:opacity-100 transition-opacity duration-300 hover:scale-110 transform cursor-pointer z-10"
+                    >
+                      <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors duration-200">
                         <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z"/>
                         </svg>
                       </div>
-                    </div>
+                    </button>
                   </div>
                 ) : (
                   <div className="relative h-56 bg-gradient-to-br from-red-500 via-red-600 to-red-700 overflow-hidden">
@@ -324,6 +357,57 @@ const Portfolio = () => {
           ))}
         </motion.div>
       </div>
+
+      {/* Video Modal */}
+      {selectedVideo && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={closeVideoModal}
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="relative bg-white rounded-2xl overflow-hidden shadow-2xl max-w-4xl w-full max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={closeVideoModal}
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors duration-200"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Video */}
+            <div className="relative">
+              <video
+                className="w-full h-auto max-h-[80vh] object-contain"
+                controls
+                autoPlay
+                loop
+                muted
+              >
+                <source src={selectedVideo.url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+            {/* Video title */}
+            <div className="p-6 bg-white">
+              <h3 className="text-2xl font-serif font-bold text-gray-900">
+                {selectedVideo.title}
+              </h3>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
     </section>
   )
 }
