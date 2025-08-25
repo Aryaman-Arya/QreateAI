@@ -40,7 +40,7 @@ const TypewriterText = ({ text, className, delay = 0, speed = 80 }) => {
 const Hero = () => {
   const stats = [
     { label: 'Vision. Language. Intelligence.', value: 'Solving problems across modalities.' },
-    { label: '10+ Projects', value: 'From early-stage startups to enterprises' }
+    { label: '10+ Projects/Partnerships', value: 'From early-stage startups to enterprises' }
   ]
 
   return (
