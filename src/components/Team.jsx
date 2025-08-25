@@ -12,13 +12,13 @@ const Team = () => {
       name: 'Harsh',
       role: 'Co-Founder & CTO',
       description: 'Driving our technical innovation',
-      image: '/founder_images/Harsh Pandey.jpeg'
+      image: '/founder_images/Harsh_Pandey.jpeg'
     },
     {
       name: 'Subhanshu',
       role: 'Co-Founder & CPO',
       description: 'Shaping our product strategy',
-      image: '/founder_images/Subhanshu Arya.jpeg'
+      image: '/founder_images/Subhanshu_Arya.jpeg'
     }
   ]
 
