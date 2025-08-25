@@ -8,8 +8,8 @@ const Portfolio = () => {
       description: 'Advanced AI system for tracking and re-identifying vehicles across multiple junction points using state-of-the-art computer vision algorithms.',
       technologies: 'Object Tracking, Re-ID, Junction Analysis',
       links: [
-        { name: 'Presentation', url: 'https://docs.google.com', external: true },
-        { name: 'GitHub', url: 'https://github.com', external: true }
+        { name: 'Presentation', url: 'https://docs.google.com/presentation/d/1BIQGH3oxoDyldU-Rh_-rGFmZJGT9XjVRAB3KPWh63IA/edit?usp=sharing', external: true },
+        { name: 'GitHub', url: 'https://github.com/harshp77/Phase-1-The-Bengaluru-Mobility-Challenge-2024', external: true }
       ],
       status: null
     },
@@ -19,8 +19,8 @@ const Portfolio = () => {
       description: 'Intelligent pattern recognition system analyzing vehicle behavior and traffic patterns at junction intersections for smart traffic management.',
       technologies: 'Pattern Analysis, Traffic AI, Smart Systems',
       links: [
-        { name: 'Presentation', url: 'https://docs.google.com', external: true },
-        { name: 'GitHub', url: 'https://github.com', external: true }
+        { name: 'Presentation', url: 'https://docs.google.com/presentation/d/1NW70dMrwo3I1b9Mvd3uoLGFgT67USRUboYVCpbX9MJY/edit?usp=sharing', external: true },
+        { name: 'GitHub', url: 'https://github.com/harshp77/Phase-2-The-Bengaluru-Mobility-Challenge-2024', external: true }
       ],
       status: null
     },
@@ -30,7 +30,7 @@ const Portfolio = () => {
       description: 'Intelligent intake assistant powered by advanced AI to streamline data collection and user interaction processes with natural language understanding.',
       technologies: 'NLP, AI Assistant, Automation',
       links: [
-        { name: 'Live Product', url: 'https://example.com', external: true }
+        { name: 'Live Product', url: 'https://qareai.in', external: true }
       ],
       status: null
     },
@@ -40,7 +40,7 @@ const Portfolio = () => {
       description: 'Advanced environmental forecasting system for tier 2 and 3 cities using Federated Learning, Transfer Learning, and Convolution Multiplication of non-image data for accurate AQI and heatwave predictions.',
       technologies: 'Federated Learning, Transfer Learning, Environmental AI',
       links: [
-        { name: 'Live Demo', url: 'https://example.com', external: true }
+        { name: 'Live Demo', url: 'https://aqiheatwave.netlify.app/', external: true }
       ],
       status: null
     },
@@ -65,8 +65,10 @@ const Portfolio = () => {
       title: 'Lobo AI – Personalized Podcast MVP',
       description: 'AI-powered personalized podcast platform for stock market investors. Users select stocks (up to 20) and receive daily audio briefings with news, summaries, and voice conversion, accessible via a clean web interface.',
       technologies: 'Web Frontend, Backend Automation, Database, News Aggregation, NLP, Generative AI, Text-to-Speech, Cloud Hosting',
-      links: [],
-      status: 'MVP Development'
+      links: [
+        { name: 'Live Product', url: 'https://joinlobo.com', external: true }
+      ],
+      status: null
     }
   ]
 
