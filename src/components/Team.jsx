@@ -6,19 +6,19 @@ const Team = () => {
       name: 'Subhanshu',
       role: 'Co-Founder & CPO',
       description: 'Shaping our product strategy',
-      image: '/founder_images/subhanshu.jpg'
+      image: '/founder_images/Subhanshu Arya.jpeg'
     },
     {
       name: 'Harsh',
       role: 'Co-Founder & CTO',
       description: 'Driving our technical innovation',
-      image: '/founder_images/harsh.jpg'
+      image: '/founder_images/Harsh Pandey.jpeg'
     },
     {
       name: 'Aryaman',
       role: 'Co-Founder & CEO',
       description: 'Leading our vision and strategic direction',
-      image: '/founder_images/aryaman.jpg'
+      image: '/founder_images/Aryaman.jpeg'
     }
   ]
 
