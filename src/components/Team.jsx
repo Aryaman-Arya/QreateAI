@@ -3,34 +3,22 @@ import { motion } from 'framer-motion'
 const Team = () => {
   const teamMembers = [
     {
-      name: 'Aryaman',
-      role: 'Co-Founder & CEO',
-      description: 'Leading our vision and strategic direction',
-      image: (
-        <div className="w-32 h-32 bg-gradient-to-br from-gray-300 to-gray-400 rounded-full flex items-center justify-center text-gray-600 text-4xl font-bold">
-          A
-        </div>
-      )
+      name: 'Subhanshu',
+      role: 'Co-Founder & CPO',
+      description: 'Shaping our product strategy',
+      image: '/founder_images/subhanshu.jpg'
     },
     {
       name: 'Harsh',
       role: 'Co-Founder & CTO',
       description: 'Driving our technical innovation',
-      image: (
-        <div className="w-32 h-32 bg-gradient-to-br from-gray-300 to-gray-400 rounded-full flex items-center justify-center text-gray-600 text-4xl font-bold">
-          H
-        </div>
-      )
+      image: '/founder_images/harsh.jpg'
     },
     {
-      name: 'Subhanshu',
-      role: 'Co-Founder & CPO',
-      description: 'Shaping our product strategy',
-      image: (
-        <div className="w-32 h-32 bg-gradient-to-br from-gray-300 to-gray-400 rounded-full flex items-center justify-center text-gray-600 text-4xl font-bold">
-          S
-        </div>
-      )
+      name: 'Aryaman',
+      role: 'Co-Founder & CEO',
+      description: 'Leading our vision and strategic direction',
+      image: '/founder_images/aryaman.jpg'
     }
   ]
 
@@ -98,7 +86,11 @@ const Team = () => {
                   className="mb-6 flex justify-center"
                 >
                   <div className="group-hover:from-red-300 group-hover:to-red-400 transition-all duration-300">
-                    {member.image}
+                    <img 
+                      src={member.image}
+                      alt={`${member.name} - ${member.role}`}
+                      className="w-32 h-32 rounded-full object-cover border-4 border-gray-200 group-hover:border-red-300 transition-all duration-300"
+                    />
                   </div>
                 </motion.div>
                 
