@@ -12,7 +12,7 @@ const Portfolio = () => {
         { name: 'GitHub', url: 'https://github.com/harshp77/Phase-1-The-Bengaluru-Mobility-Challenge-2024', external: true }
       ],
       status: null,
-      videoUrl: '/Project_video_files/1.mp4'
+      videoUrl: '/Project_video_files/Vehicle Tracking & Re-Identification.mp4'
     },
     {
       category: 'Pattern Recognition',
@@ -24,7 +24,7 @@ const Portfolio = () => {
         { name: 'GitHub', url: 'https://github.com/harshp77/Phase-2-The-Bengaluru-Mobility-Challenge-2024', external: true }
       ],
       status: null,
-      videoUrl: '/Project_video_files/2.mp4'
+      videoUrl: '/Project_video_files/Vehicle Pattern Recognition.mp4'
     },
     {
       category: 'AI Assistant',
@@ -35,7 +35,18 @@ const Portfolio = () => {
         { name: 'Live Product', url: 'https://qareai.in', external: true }
       ],
       status: null,
-      videoUrl: '/Project_video_files/3.mp4'
+      videoUrl: '/Project_video_files/DoQ AI Assistant.mp4'
+    },
+    {
+      category: 'AI + Audio Content',
+      title: 'Lobo AI – Personalized Podcast MVP',
+      description: 'AI-powered personalized podcast platform for stock market investors. Users select stocks (up to 20) and receive daily audio briefings with news, summaries, and voice conversion, accessible via a clean web interface.',
+      technologies: 'Web Frontend, Backend Automation, Database, News Aggregation, NLP, Generative AI, Text-to-Speech, Cloud Hosting',
+      links: [
+        { name: 'Live Product', url: 'https://joinlobo.com', external: true }
+      ],
+      status: null,
+      videoUrl: '/Project_video_files/Lobo AI – Personalized Podcast MVP.mp4'
     },
     {
       category: 'Environmental AI',
@@ -46,7 +57,7 @@ const Portfolio = () => {
         { name: 'Live Demo', url: 'https://aqiheatwave.netlify.app/', external: true }
       ],
       status: null,
-      videoUrl: '/Project_video_files/4.mp4'
+      videoUrl: '/Project_video_files/AQI & Heatwave Forecasting.mp4'
     },
     {
       category: 'Supply Chain AI',
@@ -64,16 +75,59 @@ const Portfolio = () => {
       links: [],
       status: 'Confidential Project'
     },
+
     {
-      category: 'AI + Audio Content',
-      title: 'Lobo AI – Personalized Podcast MVP',
-      description: 'AI-powered personalized podcast platform for stock market investors. Users select stocks (up to 20) and receive daily audio briefings with news, summaries, and voice conversion, accessible via a clean web interface.',
-      technologies: 'Web Frontend, Backend Automation, Database, News Aggregation, NLP, Generative AI, Text-to-Speech, Cloud Hosting',
+      category: 'Computer Vision',
+      title: 'Floorplan Annotation Platform',
+      description: 'A full-stack floorplan annotation platform similar to Roboflow with AI capabilities that can automatically assign room names from PDF files using auto-classification of bounding boxes.',
+      technologies: 'Computer Vision, PDF Processing, Auto-Classification, Full-Stack Development',
+      links: [],
+      status: 'Confidential Project'
+    },
+
+    {
+      category: 'Health Tech',
+      title: 'Phitness - AI-Powered Fitness Betting',
+      description: 'A hackathon project featuring fitness betting where users bet against themselves. If they don\'t go to the gym, their bet amount is deducted. Features AI voice calls in David\'s voice and geo-location verification.',
+      technologies: 'AI Voice, Geo-location, Betting System, Health Tech, Mobile Development',
       links: [
-        { name: 'Live Product', url: 'https://joinlobo.com', external: true }
+        { name: 'Live Demo', url: 'https://phitness.netlify.app/', external: true }
       ],
       status: null
-    }
+    },
+    {
+      category: 'Web Design',
+      title: 'Creaco - Problem Statement Showcase',
+      description: 'A sample website designed to showcase problem statements and solutions with modern web design principles and user experience focus.',
+      technologies: 'Web Design, Frontend Development, UX/UI',
+      links: [
+        { name: 'Live Website', url: 'https://creaco.netlify.app/', external: true }
+      ],
+      status: null,
+      videoUrl: '/Project_video_files/Creaco - Problem Statement Showcase.mp4'
+    },
+    {
+      category: 'Web Design',
+      title: 'Qoach - Waitlist Platform',
+      description: 'A website designed to create and manage waitlists for problem statements, featuring modern design and user engagement strategies.',
+      technologies: 'Web Design, Waitlist Management, Frontend Development',
+      links: [
+        { name: 'Live Website', url: 'https://qoach.qareai.in/', external: true }
+      ],
+      status: null,
+      videoUrl: '/Project_video_files/Qoach - Waitlist Platform.mp4'
+    },
+    {
+      category: 'Web Design',
+      title: 'Qreate Legacy Website',
+      description: 'Our previous service website showcasing our earlier design approach and service offerings, representing our design evolution.',
+      technologies: 'Web Design, Service Showcase, Legacy Frontend',
+      links: [
+        { name: 'Live Website', url: 'https://qreate-old.netlify.app/', external: true }
+      ],
+      status: null,
+      videoUrl: '/Project_video_files/Qreate Legacy Website.mp4'
+    },
   ]
 
   const containerVariants = {
