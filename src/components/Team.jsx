@@ -5,7 +5,7 @@ const Team = () => {
     {
       name: 'Aryaman',
       role: 'Co-Founder & CEO',
-      description: 'Leading our vision and strategic direction',
+      description: 'Leading our vision',
       image: '/founder_images/Aryaman.jpeg',
       linkedin: 'https://www.linkedin.com/in/aryaman-arya/'
     },
