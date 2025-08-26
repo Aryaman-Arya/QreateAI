@@ -1,52 +1,65 @@
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
-
-const TypewriterText = ({ text, className, delay = 0, speed = 80 }) => {
-  const [displayText, setDisplayText] = useState('')
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (currentIndex < text.length) {
-        setDisplayText(prev => prev + text[currentIndex])
-        setCurrentIndex(prev => prev + 1)
-      }
-    }, speed)
-
-    return () => clearTimeout(timer)
-  }, [currentIndex, text, speed])
-
-  useEffect(() => {
-    const startTimer = setTimeout(() => {
-      setCurrentIndex(0)
-      setDisplayText('')
-    }, delay * 1000)
-
-    return () => clearTimeout(startTimer)
-  }, [delay])
-
-  return (
-    <span className={className}>
-      {displayText}
-      <motion.span
-        animate={{ opacity: [1, 0] }}
-        transition={{ duration: 0.5, repeat: Infinity }}
-        className="inline-block w-1 h-12 bg-current ml-1"
-      />
-    </span>
-  )
-}
+import { useEffect, useRef } from 'react'
 
 const Hero = () => {
+  const vantaRef = useRef(null)
+  const vantaEffect = useRef(null)
+
+  useEffect(() => {
+    if (!vantaEffect.current) {
+      // Dynamically import and initialize Vanta effect
+      const initVanta = async () => {
+        try {
+          // Wait for VANTA to be available
+          const checkVANTA = () => {
+            if (window.VANTA) {
+              vantaEffect.current = window.VANTA.CLOUDS({
+                el: vantaRef.current,
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                skyColor: 0xffe6e6,
+                cloudColor: 0xfa9da4,
+                cloudShadowColor: 0x2a1111
+              })
+            } else {
+              setTimeout(checkVANTA, 100)
+            }
+          }
+          checkVANTA()
+        } catch (error) {
+          console.error('Error initializing Vanta effect:', error)
+        }
+      }
+
+      initVanta()
+    }
+
+    return () => {
+      if (vantaEffect.current) {
+        vantaEffect.current.destroy()
+      }
+    }
+  }, [])
+
   const stats = [
-    { label: 'Vision. Language. Intelligence.', value: 'Solving problems across modalities.' },
-    { label: '10+ Projects/Partnerships', value: 'From early-stage startups to enterprises globally' }
+    { label: 'AI/ML/Computer Vision', value: 'Advanced algorithms and neural networks' },
+    { label: '3,000+', value: 'Projects completed' }
   ]
 
   return (
     <section className="min-h-screen flex items-center relative overflow-hidden pt-20">
+      {/* Vanta.js Clouds Background */}
+      <div 
+        ref={vantaRef}
+        className="absolute inset-0 w-full h-full"
+        style={{ zIndex: 0 }}
+      />
+      
       {/* Background Wavy Lines */}
-      <div className="absolute right-0 top-0 w-1/2 h-full opacity-10">
+      <div className="absolute right-0 top-0 w-1/2 h-full opacity-10" style={{ zIndex: 1 }}>
         <svg className="w-full h-full" viewBox="0 0 400 800" fill="none">
           <path
             d="M400 0C300 100 200 200 300 300C400 400 300 500 200 600C100 700 0 800 100 800"
@@ -63,7 +76,7 @@ const Hero = () => {
         </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative" style={{ zIndex: 2 }}>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Text Content */}
           <motion.div
@@ -79,22 +92,20 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-gray-900 leading-tight"
               >
-                <div className="relative">
-                  <TypewriterText 
-                    text="Too niche. Too bold. Too bad. We build it anyway." 
-                    delay={0.4}
-                    speed={80}
-                  />
+                Too niche. Too bold. Too bad.
+                <br />
+                <span className="relative">
+                  We build it anyway.
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: '100%' }}
-                    transition={{ duration: 1, delay: 3.5 }}
+                    transition={{ duration: 1, delay: 1.2 }}
                     className="absolute bottom-2 left-0 h-1 bg-red-700 rounded-full"
                     style={{
                       background: 'linear-gradient(90deg, #B22222 0%, #DC2626 100%)'
                     }}
                   />
-                </div>
+                </span>
               </motion.h1>
               
               <motion.p
@@ -116,7 +127,6 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-red-700 text-white text-lg font-semibold rounded-lg hover:bg-red-800 transition-all duration-300 shadow-lg hover:shadow-xl"
-                onClick={() => window.open('https://calendly.com/qareailabs', '_blank')}
               >
                 Start Your Project
               </motion.button>
