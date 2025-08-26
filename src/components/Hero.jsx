@@ -82,10 +82,10 @@ const Hero = () => {
             setVantaStatus('error')
           }
         } else {
-          console.log('VANTA.BIRDS not available yet, retrying in 100ms...')
+          console.log('VANTA.BIRDS not available yet, retrying in 500ms...')
           console.log('Available VANTA methods:', Object.keys(window.VANTA || {}))
           setVantaStatus('retrying')
-          setTimeout(loadVanta, 100)
+          setTimeout(loadVanta, 500)
         }
       } catch (error) {
         console.error("Failed to load Vanta.js birds effect:", error)
@@ -93,10 +93,13 @@ const Hero = () => {
       }
     }
     
-    // Start loading
-    loadVanta()
+    // Wait a bit longer for scripts to load
+    const initTimer = setTimeout(() => {
+      loadVanta()
+    }, 1000)
 
     return () => {
+      clearTimeout(initTimer)
       console.log('Cleaning up Vanta birds effect...')
       if (vantaEffect) {
         vantaEffect.destroy()
