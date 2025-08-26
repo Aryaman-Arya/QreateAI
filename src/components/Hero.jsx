@@ -1,45 +1,65 @@
 import { motion } from 'framer-motion'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const Hero = () => {
   const vantaRef = useRef(null)
   const vantaEffect = useRef(null)
+  const [vantaStatus, setVantaStatus] = useState('initializing')
 
   useEffect(() => {
-    if (!vantaEffect.current) {
-      // Dynamically import and initialize Vanta effect
-      const initVanta = async () => {
-        try {
-          // Wait for VANTA to be available
-          const checkVANTA = () => {
-            if (window.VANTA) {
-              vantaEffect.current = window.VANTA.CLOUDS({
-                el: vantaRef.current,
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                minHeight: 200.00,
-                minWidth: 200.00,
-                skyColor: 0xffe6e6,
-                cloudColor: 0xfa9da4,
-                cloudShadowColor: 0x2a1111
-              })
-            } else {
-              setTimeout(checkVANTA, 100)
-            }
+    console.log('Hero component mounted, initializing Vanta effect...')
+    console.log('Window object:', window)
+    console.log('VANTA object:', window.VANTA)
+    
+    const initVanta = () => {
+      try {
+        console.log('Checking if VANTA is available...', !!window.VANTA)
+        console.log('VANTA methods:', Object.keys(window.VANTA || {}))
+        
+        if (window.VANTA && window.VANTA.CLOUDS) {
+          console.log('VANTA.CLOUDS found, initializing effect...')
+          
+          if (vantaRef.current) {
+            console.log('vantaRef.current found:', vantaRef.current)
+            
+            vantaEffect.current = window.VANTA.CLOUDS({
+              el: vantaRef.current,
+              mouseControls: true,
+              touchControls: true,
+              gyroControls: false,
+              minHeight: 200.00,
+              minWidth: 200.00,
+              skyColor: 0xffe6e6,
+              cloudColor: 0xfa9da4,
+              cloudShadowColor: 0x2a1111,
+              speed: 1.0
+            })
+            
+            console.log('Vanta effect initialized successfully!', vantaEffect.current)
+            setVantaStatus('active')
+          } else {
+            console.error('vantaRef.current is null')
+            setVantaStatus('error')
           }
-          checkVANTA()
-        } catch (error) {
-          console.error('Error initializing Vanta effect:', error)
+        } else {
+          console.log('VANTA not available yet, retrying in 100ms...')
+          setVantaStatus('retrying')
+          setTimeout(initVanta, 100)
         }
+      } catch (error) {
+        console.error('Error initializing Vanta effect:', error)
+        setVantaStatus('error')
       }
-
-      initVanta()
     }
 
+    // Start initialization
+    initVanta()
+
     return () => {
-      if (vantaEffect.current) {
+      console.log('Cleaning up Vanta effect...')
+      if (vantaEffect.current && vantaEffect.current.destroy) {
         vantaEffect.current.destroy()
+        vantaEffect.current = null
       }
     }
   }, [])
@@ -55,8 +75,18 @@ const Hero = () => {
       <div 
         ref={vantaRef}
         className="absolute inset-0 w-full h-full"
-        style={{ zIndex: 0 }}
-      />
+        style={{ 
+          zIndex: 0,
+          backgroundColor: '#ffe6e6' // Fallback color
+        }}
+      >
+        {/* Debug indicator */}
+        {process.env.NODE_ENV === 'development' && (
+          <div className="absolute top-4 left-4 bg-black/50 text-white px-2 py-1 rounded text-xs">
+            Vanta Status: {vantaStatus}
+          </div>
+        )}
+      </div>
       
       {/* Background Wavy Lines */}
       <div className="absolute right-0 top-0 w-1/2 h-full opacity-10" style={{ zIndex: 1 }}>
