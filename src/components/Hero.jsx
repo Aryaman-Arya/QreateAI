@@ -45,49 +45,86 @@ const Hero = () => {
 
   const vantaRef = useRef(null)
   const [vantaEffect, setVantaEffect] = useState(null)
+  const [vantaStatus, setVantaStatus] = useState('initializing')
  
   useEffect(() => {
-    if (!vantaEffect) {
-      const loadVanta = () => {
-        try {
-          // Dynamically import Vanta.js
-          const VANTA = window.VANTA
-          const effect = VANTA.BIRDS({
-            el: vantaRef.current,
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            backgroundColor: 0xffffff
-          })
-          setVantaEffect(effect)
-        } catch (error) {
-          console.error("Failed to load Vanta.js:", error)
+    console.log('Hero component mounted, initializing Vanta birds effect...')
+    console.log('Window object:', window)
+    console.log('VANTA object:', window.VANTA)
+    
+    const loadVanta = () => {
+      try {
+        console.log('Attempting to load Vanta birds effect...')
+        
+        if (window.VANTA && window.VANTA.BIRDS) {
+          console.log('VANTA.BIRDS found, initializing effect...')
+          
+          if (vantaRef.current) {
+            console.log('vantaRef.current found:', vantaRef.current)
+            
+            const effect = window.VANTA.BIRDS({
+              el: vantaRef.current,
+              mouseControls: true,
+              touchControls: true,
+              gyroControls: false,
+              minHeight: 200.00,
+              minWidth: 200.00,
+              scale: 1.00,
+              scaleMobile: 1.00,
+              backgroundColor: 0xffffff
+            })
+            
+            console.log('Vanta birds effect initialized successfully!', effect)
+            setVantaEffect(effect)
+            setVantaStatus('active')
+          } else {
+            console.error('vantaRef.current is null')
+            setVantaStatus('error')
+          }
+        } else {
+          console.log('VANTA.BIRDS not available yet, retrying in 100ms...')
+          console.log('Available VANTA methods:', Object.keys(window.VANTA || {}))
+          setVantaStatus('retrying')
+          setTimeout(loadVanta, 100)
         }
+      } catch (error) {
+        console.error("Failed to load Vanta.js birds effect:", error)
+        setVantaStatus('error')
       }
-      loadVanta()
     }
+    
+    // Start loading
+    loadVanta()
 
     return () => {
+      console.log('Cleaning up Vanta birds effect...')
       if (vantaEffect) {
         vantaEffect.destroy()
       }
     }
-  }, [vantaEffect])
+  }, [])
 
   return (
     <section className="min-h-screen flex items-center relative overflow-hidden pt-20">
-      {/* Background Wavy Lines */}
-      {/* Vanta.js Background */}
+      {/* Vanta.js Birds Background */}
       <div 
         ref={vantaRef} 
         className="absolute inset-0 w-full h-full"
-        style={{ zIndex: -1 }}
-      />
-      <div className="absolute right-0 top-0 w-1/2 h-full opacity-5">
+        style={{ 
+          zIndex: -1,
+          backgroundColor: '#ffffff' // Fallback white background
+        }}
+      >
+        {/* Debug indicator */}
+        {process.env.NODE_ENV === 'development' && (
+          <div className="absolute top-4 left-4 bg-black/50 text-white px-2 py-1 rounded text-xs z-10">
+            Vanta Birds Status: {vantaStatus}
+          </div>
+        )}
+      </div>
+      
+      {/* Background Wavy Lines */}
+      <div className="absolute right-0 top-0 w-1/2 h-full opacity-5" style={{ zIndex: 0 }}>
         <svg className="w-full h-full" viewBox="0 0 400 800" fill="none">
           <path
             d="M400 0C300 100 200 200 300 300C400 400 300 500 200 600C100 700 0 800 100 800"
@@ -104,7 +141,7 @@ const Hero = () => {
         </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative" style={{ zIndex: 1 }}>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Text Content */}
           <motion.div
