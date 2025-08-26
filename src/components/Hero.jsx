@@ -29,10 +29,8 @@ const Hero = () => {
               gyroControls: false,
               minHeight: 200.00,
               minWidth: 200.00,
-              skyColor: 0xffe6e6,
-              cloudColor: 0xfa9da4,
-              cloudShadowColor: 0x2a1111,
-              speed: 1.0
+              skyColor: 0xffc8c8,
+              cloudColor: 0xff9e9e
             })
             
             console.log('Vanta effect initialized successfully!', vantaEffect.current)
@@ -77,7 +75,7 @@ const Hero = () => {
         className="absolute inset-0 w-full h-full"
         style={{ 
           zIndex: 0,
-          backgroundColor: '#ffe6e6' // Fallback color
+          backgroundColor: '#ffc8c8' // Updated fallback color to match skyColor
         }}
       >
         {/* Debug indicator */}
